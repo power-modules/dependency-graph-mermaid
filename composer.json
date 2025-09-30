@@ -1,0 +1,50 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "power-modules/dependency-graph-mermaid",
+    "description": "Mermaid renderer plugin for power-modules/dependency-graph (flowchart, class diagram, timeline)",
+    "type": "library",
+    "keywords": [
+        "modular",
+        "framework",
+        "power-modules",
+        "dependency-graph",
+        "mermaid",
+        "module-dependencies",
+        "visualization",
+        "analysis",
+        "php",
+        "dependency-visualizer",
+        "architecture",
+        "encapsulation"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evgenii Teterin",
+            "email": "roundcubez@gmail.com",
+            "role": "Owner"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modular\\DependencyGraph\\Renderer\\Mermaid\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modular\\DependencyGraph\\Renderer\\Mermaid\\Test\\": "test/",
+            "App\\": "examples/ecommerce/App/"
+        }
+    },
+    "require": {
+        "php": "^8.4",
+        "power-modules/framework": "^2.1",
+        "power-modules/plugin": "^1.0",
+        "power-modules/dependency-graph": "^0.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.3",
+        "friendsofphp/php-cs-fixer": "^3.88",
+        "phpstan/phpstan": "^2.1"
+    }
+}
