@@ -1,0 +1,27 @@
+graph LR
+    ConfigModule[ConfigModule]
+    NotificationModule[NotificationModule]
+    DatabaseModule[DatabaseModule]
+    UserModule[UserModule]
+    ProductModule[ProductModule]
+    PaymentModule[PaymentModule]
+    OrderModule[OrderModule]
+
+    UserModule --> |DatabaseConnection| DatabaseModule
+    UserModule --> |EmailService, SMSService| NotificationModule
+    ProductModule --> |DatabaseConnection, QueryBu...| DatabaseModule
+    PaymentModule --> |DatabaseConnection| DatabaseModule
+    PaymentModule --> |EmailService| NotificationModule
+    OrderModule --> |UserService| UserModule
+    OrderModule --> |ProductService| ProductModule
+    OrderModule --> |PaymentProcessor, PaymentVa...| PaymentModule
+    OrderModule --> |EmailService| NotificationModule
+
+    class ConfigModule independent
+    class ConfigModule unused
+    class NotificationModule independent
+    class DatabaseModule independent
+    class OrderModule unused
+
+    classDef independent fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef unused fill:#fff3e0,stroke:#f57c00,stroke-width:2px

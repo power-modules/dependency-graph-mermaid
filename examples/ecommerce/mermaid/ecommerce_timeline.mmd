@@ -1,0 +1,11 @@
+timeline
+title E-commerce module initialization timeline
+section Infrastructure
+  Phase 0 : ConfigModule (exports:1, imports:0)
+            : DatabaseModule (exports:2, imports:0)
+            : NotificationModule (exports:3, imports:0)
+section Domain
+  Phase 1 : PaymentModule (exports:2, imports:2)
+            : ProductModule (exports:3, imports:2)
+            : UserModule (exports:3, imports:3)
+  Phase 2 : OrderModule (exports:2, imports:5)

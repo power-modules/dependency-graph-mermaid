@@ -1,0 +1,46 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+---
+classDiagram
+direction TB
+    class ConfigModule {
+    }
+    class NotificationModule {
+    }
+    class DatabaseModule {
+    }
+    class UserModule {
+    }
+    class ProductModule {
+    }
+    class PaymentModule {
+    }
+    class OrderModule {
+    }
+
+    <<independent>> ConfigModule
+    <<independent>> NotificationModule
+    <<independent>> DatabaseModule
+    <<unused>> ConfigModule
+    <<unused>> OrderModule
+
+    UserModule ..> DatabaseModule
+    UserModule ..> NotificationModule
+    ProductModule ..> DatabaseModule
+    PaymentModule ..> DatabaseModule
+    PaymentModule ..> NotificationModule
+    OrderModule ..> UserModule
+    OrderModule ..> ProductModule
+    OrderModule ..> PaymentModule
+    OrderModule ..> NotificationModule
+
+    class ConfigModule:::independent
+    class NotificationModule:::independent
+    class DatabaseModule:::independent
+    class ConfigModule:::unused
+    class OrderModule:::unused
+
+    classDef independent fill:#e1f5fe, stroke:#0277bd, stroke-width:2px;
+    classDef unused fill:#fff3e0, stroke:#f57c00, stroke-width:2px, stroke-dasharray: 2;

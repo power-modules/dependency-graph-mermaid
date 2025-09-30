@@ -1,0 +1,1 @@
+a:2:{s:5:"value";a:7:{i:0;s:37:"Modular\Framework\Config\ConfigModule";i:1;s:35:"App\Notification\NotificationModule";i:2;s:27:"App\Database\DatabaseModule";i:3;s:19:"App\User\UserModule";i:4;s:25:"App\Product\ProductModule";i:5;s:25:"App\Payment\PaymentModule";i:6;s:21:"App\Order\OrderModule";}s:3:"ttl";N;}

@@ -1,0 +1,22 @@
+graph LR
+    ApiGateway[ApiGateway<br/>exports:<br/>RoutingService<br/>AuthMiddleware]
+    Authentication[Authentication<br/>exports:<br/>JWTService<br/>OAuth2Service]
+    ProductCatalog[ProductCatalog<br/>exports:<br/>CatalogService<br/>SearchService]
+    ShoppingCart[ShoppingCart<br/>exports:<br/>CartService<br/>SessionManager]
+    Logging[Logging<br/>exports:<br/>Logger<br/>MetricsCollector]
+
+    ApiGateway --> |JWTService| Authentication
+    ApiGateway --> |Logger| Logging
+    ShoppingCart --> |CatalogService| ProductCatalog
+    ShoppingCart --> |JWTService| Authentication
+
+    class ApiGateway independent
+    class ApiGateway unused
+    class Authentication independent
+    class ProductCatalog independent
+    class ShoppingCart independent
+    class ShoppingCart unused
+    class Logging independent
+
+    classDef independent fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef unused fill:#fff3e0,stroke:#f57c00,stroke-width:2px

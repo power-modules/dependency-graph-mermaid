@@ -13,11 +13,14 @@ devcontainer:
 	docker build -t power-modules-devcontainer -f DockerfileDevContainer .
 
 # Generate example Mermaid diagrams and validate their basic structure
-diagrams: generate-diagrams verify-diagrams
+diagrams: generate-diagrams generate-microservices verify-diagrams
 	@echo "Diagrams generated and validated."
 
 generate-diagrams:
 	php examples/ecommerce/generate.php
+
+generate-microservices:
+	php examples/microservices/generate_microservices.php
 
 verify-diagrams:
 	@test -f examples/ecommerce/mermaid/ecommerce_full.mmd

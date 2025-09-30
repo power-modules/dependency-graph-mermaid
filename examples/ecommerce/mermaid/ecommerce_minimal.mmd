@@ -1,0 +1,27 @@
+graph LR
+    ConfigModule[ConfigModule]
+    NotificationModule[NotificationModule]
+    DatabaseModule[DatabaseModule]
+    UserModule[UserModule]
+    ProductModule[ProductModule]
+    PaymentModule[PaymentModule]
+    OrderModule[OrderModule]
+
+    UserModule --> DatabaseModule
+    UserModule --> NotificationModule
+    ProductModule --> DatabaseModule
+    PaymentModule --> DatabaseModule
+    PaymentModule --> NotificationModule
+    OrderModule --> UserModule
+    OrderModule --> ProductModule
+    OrderModule --> PaymentModule
+    OrderModule --> NotificationModule
+
+    class ConfigModule independent
+    class ConfigModule unused
+    class NotificationModule independent
+    class DatabaseModule independent
+    class OrderModule unused
+
+    classDef independent fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef unused fill:#fff3e0,stroke:#f57c00,stroke-width:2px

@@ -1,0 +1,51 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+---
+classDiagram
+direction TB
+    class ApiGateway {
+        + RoutingService
+        + AuthMiddleware
+    }
+    class Authentication {
+        + JWTService
+        + OAuth2Service
+    }
+    class ProductCatalog {
+        + CatalogService
+        + SearchService
+    }
+    class ShoppingCart {
+        + CartService
+        + SessionManager
+    }
+    class Logging {
+        + Logger
+        + MetricsCollector
+    }
+
+    <<independent>> ApiGateway
+    <<independent>> Authentication
+    <<independent>> ProductCatalog
+    <<independent>> ShoppingCart
+    <<independent>> Logging
+    <<unused>> ApiGateway
+    <<unused>> ShoppingCart
+
+    ApiGateway ..> Authentication : JWTService
+    ApiGateway ..> Logging : Logger
+    ShoppingCart ..> ProductCatalog : CatalogService
+    ShoppingCart ..> Authentication : JWTService
+
+    class ApiGateway:::independent
+    class Authentication:::independent
+    class ProductCatalog:::independent
+    class ShoppingCart:::independent
+    class Logging:::independent
+    class ApiGateway:::unused
+    class ShoppingCart:::unused
+
+    classDef independent fill:#e1f5fe, stroke:#0277bd, stroke-width:2px;
+    classDef unused fill:#fff3e0, stroke:#f57c00, stroke-width:2px, stroke-dasharray: 2;
