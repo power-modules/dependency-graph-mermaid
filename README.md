@@ -1,5 +1,11 @@
 # Dependency Graph → Mermaid Renderers
 
+[![CI](https://github.com/power-modules/dependency-graph-mermaid/actions/workflows/php.yml/badge.svg)](https://github.com/power-modules/dependency-graph-mermaid/actions/workflows/php.yml)
+[![Packagist Version](https://img.shields.io/packagist/v/power-modules/dependency-graph-mermaid)](https://packagist.org/packages/power-modules/dependency-graph-mermaid)
+[![PHP Version](https://img.shields.io/packagist/php-v/power-modules/dependency-graph-mermaid)](https://packagist.org/packages/power-modules/dependency-graph-mermaid)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PHPStan](https://img.shields.io/badge/PHPStan-level%208-blue)](#)
+
 Mermaid renderer plugin for power-modules/dependency-graph. It adds three renderers (flowchart, class diagram, timeline) and a module that registers them as plugins for discovery in Modular apps.
 
 - Flowchart: `MermaidGraph` → Mermaid `graph LR`
