@@ -122,8 +122,8 @@ new MermaidTimeline(
 
 This repo ships runnable examples and a Makefile to generate diagrams.
 
-- E-commerce app: `examples/ecommerce/generate.php`
-- Synthetic microservices: `examples/microservices/generate_microservices.php`
+- E-commerce app: [ecommerce](examples/ecommerce/mermaid/)
+- Synthetic microservices: [microservices](examples/microservices/mermaid/)
 
 Generate example diagrams (flowchart, class diagram, timeline) into `examples/**/mermaid/`:
 
@@ -134,6 +134,68 @@ make diagrams
 You can preview the `.mmd` files with:
 - Mermaid Live: https://mermaid.live/
 - VS Code: “Markdown Preview Mermaid Support” or native Mermaid support
+
+### Example output
+```mermaid
+classDiagram
+direction TB
+    class ConfigModule {
+        + Loader
+    }
+    class NotificationModule {
+        + EmailService
+        + SMSService
+        + PushNotificationService
+    }
+    class DatabaseModule {
+        + DatabaseConnection
+        + QueryBuilder
+    }
+    class UserModule {
+        + UserService
+        + UserRepository
+        + UserAuthenticator
+    }
+    class ProductModule {
+        + ProductService
+        + ProductRepository
+        + ProductSearchService
+    }
+    class PaymentModule {
+        + PaymentProcessor
+        + PaymentValidator
+    }
+    class OrderModule {
+        + OrderService
+        + OrderRepository
+    }
+
+    <<independent>> ConfigModule
+    <<independent>> NotificationModule
+    <<independent>> DatabaseModule
+    <<unused>> ConfigModule
+    <<unused>> OrderModule
+
+    UserModule ..> DatabaseModule : DatabaseConnection
+    UserModule ..> NotificationModule : EmailService, SMSService
+    ProductModule ..> DatabaseModule : DatabaseConnection, QueryBuilder
+    PaymentModule ..> DatabaseModule : DatabaseConnection
+    PaymentModule ..> NotificationModule : EmailService
+    OrderModule ..> UserModule : UserService
+    OrderModule ..> ProductModule : ProductService
+    OrderModule ..> PaymentModule : PaymentProcessor, PaymentValidator
+    OrderModule ..> NotificationModule : EmailService
+
+    class ConfigModule:::independent
+    class NotificationModule:::independent
+    class DatabaseModule:::independent
+    class ConfigModule:::unused
+    class OrderModule:::unused
+
+    classDef independent fill:#e1f5fe, stroke:#0277bd, stroke-width:2px;
+    classDef unused fill:#fff3e0, stroke:#f57c00, stroke-width:2px, stroke-dasharray: 2;
+```
+
 
 ## Notes & conventions
 
