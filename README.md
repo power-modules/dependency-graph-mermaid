@@ -42,7 +42,10 @@ use Modular\Plugin\PowerModule\Setup\PluginRegistrySetup; // from power-modules/
 $app = (new ModularAppBuilder(__DIR__))
     ->withModules(
         // your app modules ...
-        MermaidRendererModule::class,   // provides Mermaid renderers to the registry
+        // required to use renderers:
+        \Modular\DependencyGraph\Renderer\RendererModule::class,
+        // provides Mermaid renderers to the registry
+        \Modular\DependencyGraph\Renderer\Mermaid\MermaidRendererModule::class,
     )
     ->withPowerSetup(
         new DependencyGraphSetup(),
@@ -56,6 +59,9 @@ $registry = $app->get(RendererPluginRegistry::class);
 // Create any registered renderer on demand
 $renderer = $registry->makePlugin(\Modular\DependencyGraph\Renderer\Mermaid\MermaidClassDiagram::class);
 $mermaid = $renderer->render($graph);
+
+file_put_contents(__DIR__ . '/../dependency-graph.mmd', $mermaid);
+
 ```
 
 Tip: If you don’t need plugin discovery, you can instantiate the renderer classes directly and call `render()`.
